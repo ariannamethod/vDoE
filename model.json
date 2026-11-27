@@ -1,0 +1,10 @@
+{
+  "repo_id": "ataeff/DoE.sonar",
+  "revision": "493f78d3c56655fd1f8a667ebc87b6036e2d27c8",
+  "path": "runs/vdoe-v1-dpo-20261127/merged",
+  "status": "candidate_failed_acceptance",
+  "weights_sha256": "dd6f83657f0a1678c2027e9bfa22ab70a296fc3a5f8d40d94eea98f6e05a0aa3",
+  "video_size": {
+    "longest_edge": 512
+  }
+}
