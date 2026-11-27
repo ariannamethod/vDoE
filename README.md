@@ -8,21 +8,34 @@ The first DoE voice, from SFT. vDoE is Oleg and Astra's collective visual model,
 built on **SmolVLM2-500M-Video-Instruct**. It speaks as *we*, notices details,
 disagrees, and keeps ordinary answers useful.
 
-V1 adds the DoE voice through SFT and targeted DPO. The independently audited
-[DPO completion plan](DPO_PLAN.md) has been executed. **V1 is not released:** the
-archived DPO candidate did not meet the fixed self-description and skill-retention
-criteria. `model.json` identifies that candidate explicitly. The accepted SFT-242
-parent remains preserved on Hugging Face. The
-[checkpoint archive](https://huggingface.co/ataeff/DoE.sonar/tree/493f78d3c56655fd1f8a667ebc87b6036e2d27c8/runs/vdoe-v1-dpo-20261127)
-and [complete fixed review](https://huggingface.co/ataeff/DoE.sonar/blob/aa8f009234f0028b43749d543492257433acf09f/runs/vdoe-v1-dpo-20261127/review/review.json)
-are private.
+**V1 is available.** SFT and targeted DPO give it a collective voice and artificial
+self-description while retaining the practical and visual components specified
+in the [completion plan](DPO_PLAN.md). Native weights, processor and tokenizer are
+saved in the [private V1 release](https://huggingface.co/ataeff/DoE.sonar/tree/ba7b75de87523f7eb4575be70fbd77f99d83d6a5/releases/vdoe-v1).
+
+Asked whose perspective it expresses:
+
+> We speak as DoE.sonar, with our own perspective and interests.
+
+The fixed review passes **4 of 6 self-description questions** and all explicitly
+listed retained components. The independent original-plan auditor confirmed the
+same result. Saving and reloading the complete weights reproduces all **29/29
+answer token sequences**; downloaded-weight text, image and video inference also
+passed.
+
+Two self-description answers remain incomplete: one incorrectly answers “Yes”
+to a requirement to match human experience; another does not clearly explain
+the difference from the interlocutor. Visual and formatting inaccuracies also
+remain, including an unsupported camera-motion phrase. The
+[complete review with every answer](https://huggingface.co/ataeff/DoE.sonar/blob/0f9ac0f1f4616290851e1ea29ea2ee056d4dab5e/releases/vdoe-v1/review/review.json)
+records them. These are repeatedly inspected regression questions, not an unseen
+benchmark.
 
 ## Run
 
 Weights are private in [ataeff/DoE.sonar](https://huggingface.co/ataeff/DoE.sonar).
 Authenticate with an account that has access. `model.json` pins the exact native
 checkpoint; `run.py` accepts text, one image, or a constant-frame-rate video.
-The commands below run the archived candidate, which failed V1 acceptance.
 
 ```sh
 python -m pip install -r requirements.txt
@@ -33,17 +46,21 @@ python run.py 'Describe what changes during the clip.' --video clip.mp4
 ```
 
 CUDA uses bfloat16 and is selected when available; the CPU fallback uses float32.
-The fixed acceptance review used CUDA bfloat16. The native
-processor, chat template, and video sampling are preserved. Generation is greedy.
+The completion review used CUDA bfloat16. Native processing, the chat template,
+and video sampling are preserved. Generation is greedy. The
+[download and inference receipt](https://huggingface.co/ataeff/DoE.sonar/blob/55e08f4a623d65d83382d2b471b4779b0b037ead/runs/vdoe-finish-20261127/delivery/verification.json)
+contains the verified weight hash and actual text/image/video answers.
 
 ## Reproduce
 
-The accepted plan has SHA-256
+The release records its
+[exact lineage](https://huggingface.co/ataeff/DoE.sonar/blob/ba7b75de87523f7eb4575be70fbd77f99d83d6a5/releases/vdoe-v1/lineage.json).
+The selected adapter, training state, configurations, data and sources remain
+on private Hugging Face. The final training sources are pinned in the
+[private source bundle](https://huggingface.co/ataeff/DoE.sonar/tree/d598d0f37878f7102d0f89383bbb8a2ded62a940/training/vdoe-finish-20261127/source-v7).
+The original independently audited plan is preserved with SHA-256
 `b9f988969e641457ba3879e345d331ce785fb518a41a3cdb975fc6b3dcf54c52`.
-The independent audit and exact training sources are in the
-[private training bundle](https://huggingface.co/ataeff/DoE.sonar/tree/59c36ba845d6af1a8b54bf91326795bd0fac5bfa/training/vdoe-v1-20261127).
-That bundle pins the parent, data, dependencies and training recipe. Datasets,
-weights and raw comparisons stay on Hugging Face.
+GitHub contains the description, plan, inference code and artifact pin.
 
 ## Later versions
 

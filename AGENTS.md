@@ -9,8 +9,9 @@ native SmolVLM2 image/video path while developing that voice.
 
 V1 is SFT plus targeted DPO. Parliament is V2, D1 is V3, and outward actions and
 associative memory are V4. Completing V1 does not acquire those later requirements.
-Follow the independently audited plan; do not grow its criteria or run another
-experiment automatically. Show actual outputs and report the fixed result.
+Follow DPO_PLAN and the active authorization for sustained work on the instance.
+Keep completion criteria fixed, repair within that scope, and show actual outputs.
+Do not return the task after each training block while authorized work remains.
 
 GitHub contains the model's description, inference code, accepted plan and pinned
 artifact references. Training sources, datasets, media, weights and raw results
